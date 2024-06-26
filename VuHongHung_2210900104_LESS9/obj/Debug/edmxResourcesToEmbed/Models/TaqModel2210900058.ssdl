@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TRUONGANHQUAN_2210900058_LESSION9Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TaqKhoa">
+    <Key>
+      <PropertyRef Name="TaqMakhoa" />
+    </Key>
+    <Property Name="TaqMakhoa" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TaqTenkhoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="TaqTrangThai" Type="bit" />
+  </EntityType>
+  <EntityType Name="TaqSinhvien">
+    <Key>
+      <PropertyRef Name="TaqMaSV" />
+    </Key>
+    <Property Name="TaqMaSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TaqHoSV" Type="nvarchar" MaxLength="50" />
+    <Property Name="TaqTenSV" Type="nvarchar" MaxLength="50" />
+    <Property Name="TaqNgaySinh" Type="date" />
+    <Property Name="TaqPhai" Type="bit" />
+    <Property Name="TaqPhone" Type="nchar" MaxLength="10" />
+    <Property Name="TaqEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="TaqMakhoa" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_TaqSinhvien_TaqKhoa">
+    <End Role="TaqKhoa" Type="Self.TaqKhoa" Multiplicity="0..1" />
+    <End Role="TaqSinhvien" Type="Self.TaqSinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaqKhoa">
+        <PropertyRef Name="TaqMakhoa" />
+      </Principal>
+      <Dependent Role="TaqSinhvien">
+        <PropertyRef Name="TaqMakhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TRUONGANHQUAN_2210900058_LESSION9ModelStoreContainer">
+    <EntitySet Name="TaqKhoa" EntityType="Self.TaqKhoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaqSinhvien" EntityType="Self.TaqSinhvien" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TaqSinhvien_TaqKhoa" Association="Self.FK_TaqSinhvien_TaqKhoa">
+      <End Role="TaqKhoa" EntitySet="TaqKhoa" />
+      <End Role="TaqSinhvien" EntitySet="TaqSinhvien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

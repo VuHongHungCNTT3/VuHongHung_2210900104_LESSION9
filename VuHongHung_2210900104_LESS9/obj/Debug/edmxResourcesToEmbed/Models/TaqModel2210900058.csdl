@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TRUONGANHQUAN_2210900058_LESSION9Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TaqKhoa">
+    <Key>
+      <PropertyRef Name="TaqMakhoa" />
+    </Key>
+    <Property Name="TaqMakhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TaqTenkhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaqTrangThai" Type="Boolean" />
+    <NavigationProperty Name="TaqSinhvien" Relationship="TRUONGANHQUAN_2210900058_LESSION9Model.FK_TaqSinhvien_TaqKhoa" FromRole="TaqKhoa" ToRole="TaqSinhvien" />
+  </EntityType>
+  <EntityType Name="TaqSinhvien">
+    <Key>
+      <PropertyRef Name="TaqMaSV" />
+    </Key>
+    <Property Name="TaqMaSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaqHoSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaqTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaqNgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="TaqPhai" Type="Boolean" />
+    <Property Name="TaqPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TaqEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaqMakhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TaqKhoa" Relationship="TRUONGANHQUAN_2210900058_LESSION9Model.FK_TaqSinhvien_TaqKhoa" FromRole="TaqSinhvien" ToRole="TaqKhoa" />
+  </EntityType>
+  <EntityContainer Name="TRUONGANHQUAN_2210900058_LESSION9Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TaqKhoa" EntityType="Self.TaqKhoa" />
+    <EntitySet Name="TaqSinhvien" EntityType="Self.TaqSinhvien" />
+    <AssociationSet Name="FK_TaqSinhvien_TaqKhoa" Association="TRUONGANHQUAN_2210900058_LESSION9Model.FK_TaqSinhvien_TaqKhoa">
+      <End Role="TaqKhoa" EntitySet="TaqKhoa" />
+      <End Role="TaqSinhvien" EntitySet="TaqSinhvien" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_TaqSinhvien_TaqKhoa">
+    <End Type="TRUONGANHQUAN_2210900058_LESSION9Model.TaqKhoa" Role="TaqKhoa" Multiplicity="0..1" />
+    <End Type="TRUONGANHQUAN_2210900058_LESSION9Model.TaqSinhvien" Role="TaqSinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaqKhoa">
+        <PropertyRef Name="TaqMakhoa" />
+      </Principal>
+      <Dependent Role="TaqSinhvien">
+        <PropertyRef Name="TaqMakhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

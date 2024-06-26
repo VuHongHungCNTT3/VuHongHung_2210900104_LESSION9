@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TRUONGANHQUAN_2210900058_LESSION9Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TaqKhoa">
+          <Key>
+            <PropertyRef Name="TaqMakhoa" />
+          </Key>
+          <Property Name="TaqMakhoa" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="TaqTenkhoa" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaqTrangThai" Type="bit" />
+        </EntityType>
+        <EntityType Name="TaqSinhvien">
+          <Key>
+            <PropertyRef Name="TaqMaSV" />
+          </Key>
+          <Property Name="TaqMaSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaqHoSV" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaqTenSV" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaqNgaySinh" Type="date" />
+          <Property Name="TaqPhai" Type="bit" />
+          <Property Name="TaqPhone" Type="nchar" MaxLength="10" />
+          <Property Name="TaqEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaqMakhoa" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_TaqSinhvien_TaqKhoa">
+          <End Role="TaqKhoa" Type="Self.TaqKhoa" Multiplicity="0..1" />
+          <End Role="TaqSinhvien" Type="Self.TaqSinhvien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaqKhoa">
+              <PropertyRef Name="TaqMakhoa" />
+            </Principal>
+            <Dependent Role="TaqSinhvien">
+              <PropertyRef Name="TaqMakhoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TRUONGANHQUAN_2210900058_LESSION9ModelStoreContainer">
+          <EntitySet Name="TaqKhoa" EntityType="Self.TaqKhoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaqSinhvien" EntityType="Self.TaqSinhvien" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TaqSinhvien_TaqKhoa" Association="Self.FK_TaqSinhvien_TaqKhoa">
+            <End Role="TaqKhoa" EntitySet="TaqKhoa" />
+            <End Role="TaqSinhvien" EntitySet="TaqSinhvien" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TRUONGANHQUAN_2210900058_LESSION9Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TaqKhoa">
+          <Key>
+            <PropertyRef Name="TaqMakhoa" />
+          </Key>
+          <Property Name="TaqMakhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TaqTenkhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaqTrangThai" Type="Boolean" />
+          <NavigationProperty Name="TaqSinhvien" Relationship="TRUONGANHQUAN_2210900058_LESSION9Model.FK_TaqSinhvien_TaqKhoa" FromRole="TaqKhoa" ToRole="TaqSinhvien" />
+        </EntityType>
+        <EntityType Name="TaqSinhvien">
+          <Key>
+            <PropertyRef Name="TaqMaSV" />
+          </Key>
+          <Property Name="TaqMaSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaqHoSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaqTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaqNgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="TaqPhai" Type="Boolean" />
+          <Property Name="TaqPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TaqEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaqMakhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TaqKhoa" Relationship="TRUONGANHQUAN_2210900058_LESSION9Model.FK_TaqSinhvien_TaqKhoa" FromRole="TaqSinhvien" ToRole="TaqKhoa" />
+        </EntityType>
+        <EntityContainer Name="TRUONGANHQUAN_2210900058_LESSION9Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TaqKhoa" EntityType="Self.TaqKhoa" />
+          <EntitySet Name="TaqSinhvien" EntityType="Self.TaqSinhvien" />
+          <AssociationSet Name="FK_TaqSinhvien_TaqKhoa" Association="TRUONGANHQUAN_2210900058_LESSION9Model.FK_TaqSinhvien_TaqKhoa">
+            <End Role="TaqKhoa" EntitySet="TaqKhoa" />
+            <End Role="TaqSinhvien" EntitySet="TaqSinhvien" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TaqSinhvien_TaqKhoa">
+          <End Type="TRUONGANHQUAN_2210900058_LESSION9Model.TaqKhoa" Role="TaqKhoa" Multiplicity="0..1" />
+          <End Type="TRUONGANHQUAN_2210900058_LESSION9Model.TaqSinhvien" Role="TaqSinhvien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaqKhoa">
+              <PropertyRef Name="TaqMakhoa" />
+            </Principal>
+            <Dependent Role="TaqSinhvien">
+              <PropertyRef Name="TaqMakhoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TRUONGANHQUAN_2210900058_LESSION9ModelStoreContainer" CdmEntityContainer="TRUONGANHQUAN_2210900058_LESSION9Entities">
+          <EntitySetMapping Name="TaqKhoa">
+            <EntityTypeMapping TypeName="TRUONGANHQUAN_2210900058_LESSION9Model.TaqKhoa">
+              <MappingFragment StoreEntitySet="TaqKhoa">
+                <ScalarProperty Name="TaqMakhoa" ColumnName="TaqMakhoa" />
+                <ScalarProperty Name="TaqTenkhoa" ColumnName="TaqTenkhoa" />
+                <ScalarProperty Name="TaqTrangThai" ColumnName="TaqTrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaqSinhvien">
+            <EntityTypeMapping TypeName="TRUONGANHQUAN_2210900058_LESSION9Model.TaqSinhvien">
+              <MappingFragment StoreEntitySet="TaqSinhvien">
+                <ScalarProperty Name="TaqMaSV" ColumnName="TaqMaSV" />
+                <ScalarProperty Name="TaqHoSV" ColumnName="TaqHoSV" />
+                <ScalarProperty Name="TaqTenSV" ColumnName="TaqTenSV" />
+                <ScalarProperty Name="TaqNgaySinh" ColumnName="TaqNgaySinh" />
+                <ScalarProperty Name="TaqPhai" ColumnName="TaqPhai" />
+                <ScalarProperty Name="TaqPhone" ColumnName="TaqPhone" />
+                <ScalarProperty Name="TaqEmail" ColumnName="TaqEmail" />
+                <ScalarProperty Name="TaqMakhoa" ColumnName="TaqMakhoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

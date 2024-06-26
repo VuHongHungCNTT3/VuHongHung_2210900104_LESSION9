@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TRUONGANHQUAN_2210900058_LESSION9ModelStoreContainer" CdmEntityContainer="TRUONGANHQUAN_2210900058_LESSION9Entities">
+    <EntitySetMapping Name="TaqKhoa">
+      <EntityTypeMapping TypeName="TRUONGANHQUAN_2210900058_LESSION9Model.TaqKhoa">
+        <MappingFragment StoreEntitySet="TaqKhoa">
+          <ScalarProperty Name="TaqMakhoa" ColumnName="TaqMakhoa" />
+          <ScalarProperty Name="TaqTenkhoa" ColumnName="TaqTenkhoa" />
+          <ScalarProperty Name="TaqTrangThai" ColumnName="TaqTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaqSinhvien">
+      <EntityTypeMapping TypeName="TRUONGANHQUAN_2210900058_LESSION9Model.TaqSinhvien">
+        <MappingFragment StoreEntitySet="TaqSinhvien">
+          <ScalarProperty Name="TaqMaSV" ColumnName="TaqMaSV" />
+          <ScalarProperty Name="TaqHoSV" ColumnName="TaqHoSV" />
+          <ScalarProperty Name="TaqTenSV" ColumnName="TaqTenSV" />
+          <ScalarProperty Name="TaqNgaySinh" ColumnName="TaqNgaySinh" />
+          <ScalarProperty Name="TaqPhai" ColumnName="TaqPhai" />
+          <ScalarProperty Name="TaqPhone" ColumnName="TaqPhone" />
+          <ScalarProperty Name="TaqEmail" ColumnName="TaqEmail" />
+          <ScalarProperty Name="TaqMakhoa" ColumnName="TaqMakhoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
